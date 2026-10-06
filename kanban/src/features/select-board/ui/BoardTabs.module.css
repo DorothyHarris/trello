@@ -1,0 +1,33 @@
+.board-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.board-tabs__item {
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  color: #44546f;
+  background: transparent;
+  border: 1px solid #dcdfe4;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.board-tabs__item:hover {
+  background-color: rgba(9, 30, 66, 0.06);
+}
+
+.board-tabs__item:focus-visible {
+  outline: 2px solid #0c66e4;
+  outline-offset: 2px;
+}
+
+.board-tabs__item--active {
+  color: #0c66e4;
+  border-color: #0c66e4;
+  background-color: #e9f2ff;
+}

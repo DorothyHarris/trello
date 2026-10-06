@@ -1,0 +1,40 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 14px;
+  color: #44546f;
+  background: transparent;
+  border: 2px dashed #a5adba;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  color: #172b4d;
+  background-color: rgba(9, 30, 66, 0.06);
+  border-color: #626f86;
+}
+
+.button:focus-visible {
+  outline: 2px solid #0c66e4;
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--full {
+  width: 100%;
+}
+
+.button__icon {
+  font-size: 16px;
+  line-height: 1;
+}
