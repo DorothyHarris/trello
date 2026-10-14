@@ -30,7 +30,13 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const boardId = get().currentBoardId;
     if (boardId === null) throw new Error("Доска не выбрана");
 
-    const column = await columnApi.createColumn(boardId, { title });
+    const column = await columnApi.postColumn(boardId, { title });
     set((state) => ({ columns: [...state.columns, column] }));
+  },
+
+  postBoard: async (title) => {
+    const board = await boardApi.postBoard({ title });
+    set((state) => ({ boards: [...state.boards, board] }));
+    await get().openBoard(board.id);
   },
 }));

@@ -19,12 +19,13 @@ export type Column = {
   version: number;
 };
 
-export type BoardSummary = {
+export type BoardSummary = Pick<Board, "id"| "title">
+
+export type CreateBoardBody = Pick<Board, "title">;
+
+export type Board = {
   id: string;
   title: string;
-};
-
-export type Board = BoardSummary & {
   columns: Column[];
   cards: Card[];
 };
@@ -32,6 +33,8 @@ export type Board = BoardSummary & {
 export type CreateColumnBody = {
   title: string;
 };
+
+
 
 export type BoardState = {
   boards: BoardSummary[];
@@ -43,6 +46,7 @@ export type BoardActions = {
   fetchBoards: () => Promise<void>;
   openBoard: (boardId: string) => Promise<void>;
   createColumn: (title: string) => Promise<void>;
+  postBoard: (title: string) => Promise<void>;
 };
 
 export type BoardStore = BoardState & BoardActions;

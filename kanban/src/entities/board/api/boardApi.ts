@@ -1,6 +1,10 @@
 import { api } from "@/shared/api";
-import type { Board, BoardSummary } from "../model/type";
+import type { Board, BoardSummary, CreateBoardBody } from "../model/type";
 
 export const getBoards = () => api.get<BoardSummary[]>("/boards");
 
-export const getBoard = (boardId: string) => api.get<Board>(`/boards/${boardId}`);
+export const getBoard = (boardId: string) =>
+  api.get<Board>(`/boards/${boardId}`);
+
+export const postBoard = (title: CreateBoardBody) =>
+  api.post<BoardSummary>("/boards", title);

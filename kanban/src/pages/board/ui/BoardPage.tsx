@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { getErrorMessage } from "@/shared/api";
 import { useBoardStore, selectFetchBoards } from "@/entities/board";
-import { BoardTabs } from "@/features/select-board";
+import { BoardSidebar } from "@/widgets/board-sidebar";
+import styles from "./BoardPage.module.css";
 import { BoardWidget } from "@/widgets/board";
 
 export const BoardPage = () => {
@@ -14,9 +15,9 @@ export const BoardPage = () => {
   }, [fetchBoards]);
 
   return (
-    <>
-      <BoardTabs />
+    <div className={styles.page}>
+      <BoardSidebar />
       <BoardWidget />
-    </>
+    </div>
   );
 };

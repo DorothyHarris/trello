@@ -1,0 +1,32 @@
+.column {
+  --column-bg: #f1f2f4;
+  --column-title: #172b4d;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: var(--column-bg);
+  border-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .column {
+    --column-bg: #22272b;
+    --column-title: #dee4ea;
+  }
+}
+
+.column__title {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: var(--column-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
