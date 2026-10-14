@@ -22,23 +22,24 @@ export const BoardTabs = () => {
 
   return (
     <nav className={styles["board-tabs"]}>
-      {boards.map((board) => {
-        const className =
-          board.id === currentBoardId
-            ? `${styles["board-tabs__item"]} ${styles["board-tabs__item--active"]}`
-            : styles["board-tabs__item"];
+        {boards.map((board) => {
+          const className =
+            board.id === currentBoardId
+              ? `${styles["board-tabs__item"]} ${styles["board-tabs__item--active"]}`
+              : styles["board-tabs__item"];
 
-        return (
-          <button
-            key={board.id}
-            type="button"
-            className={className}
-            onClick={() => handleClick(board.id)}
-          >
-            {board.title}
-          </button>
-        );
-      })}
+          return (
+            <button
+              key={board.id}
+              type="button"
+              className={className}
+              title={board.title}
+              onClick={() => handleClick(board.id)}
+            >
+              {board.title}
+            </button>
+          );
+        })}
     </nav>
   );
 };

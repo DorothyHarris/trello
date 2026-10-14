@@ -8,4 +8,5 @@ export {
   selectCreateColumn,
 } from "./model/selectors";
 export type { Board, BoardSummary, Column, Card } from "./model/type";
-export { ColumnItem } from "./ui/ColumnItem";
+export { ColumnItem } from "./ui/ColumnItem/ColumnItem";
+export { BoardView } from "./ui/BoardView/BoardView";

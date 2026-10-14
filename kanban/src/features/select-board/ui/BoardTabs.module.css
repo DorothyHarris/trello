@@ -1,33 +1,81 @@
 .board-tabs {
+  --tab-text: #44546f;
+  --tab-text-hover: #172b4d;
+  --tab-bg-hover: rgba(9, 30, 66, 0.08);
+  --tab-active-bg: #e9f2ff;
+  --tab-active-text: #0c66e4;
+  --tab-focus: #0c66e4;
+  --scrollbar: rgba(9, 30, 66, 0.2);
+
+  /* список досок: прокручивается, если досок много */
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .board-tabs {
+    --tab-text: #9fadbc;
+    --tab-text-hover: #dee4ea;
+    --tab-bg-hover: rgba(161, 189, 217, 0.08);
+    --tab-active-bg: #1c2b41;
+    --tab-active-text: #579dff;
+    --tab-focus: #579dff;
+    --scrollbar: rgba(161, 189, 217, 0.25);
+  }
 }
 
 .board-tabs__item {
-  padding: 6px 14px;
+  flex-shrink: 0;
+  position: relative;
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
   font: inherit;
   font-size: 14px;
-  color: #44546f;
+  font-weight: 500;
+  text-align: left;
+  color: var(--tab-text);
   background: transparent;
-  border: 1px solid #dcdfe4;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .board-tabs__item:hover {
-  background-color: rgba(9, 30, 66, 0.06);
+  color: var(--tab-text-hover);
+  background-color: var(--tab-bg-hover);
 }
 
 .board-tabs__item:focus-visible {
-  outline: 2px solid #0c66e4;
-  outline-offset: 2px;
+  outline: 2px solid var(--tab-focus);
+  outline-offset: -2px;
 }
 
-.board-tabs__item--active {
-  color: #0c66e4;
-  border-color: #0c66e4;
-  background-color: #e9f2ff;
+.board-tabs__item--active,
+.board-tabs__item--active:hover {
+  color: var(--tab-active-text);
+  background-color: var(--tab-active-bg);
+}
+
+/* полоска слева у активной доски */
+.board-tabs__item--active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background-color: var(--tab-active-text);
 }
