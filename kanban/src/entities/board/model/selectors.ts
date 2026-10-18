@@ -9,3 +9,5 @@ export const selectOpenBoard = (state: BoardStore) => state.openBoard;
 export const selectCreateColumn = (state: BoardStore) => state.createColumn;
 
 export const selectCreateBoard = (state: BoardStore) => state.postBoard;
+export const selectDeleteBoard = (state: BoardStore) => state.deleteBoard;
+export const selectPatchBoard = (state: BoardStore) => state.patchBoardName;

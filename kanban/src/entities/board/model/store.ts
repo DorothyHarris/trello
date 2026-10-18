@@ -39,4 +39,28 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     set((state) => ({ boards: [...state.boards, board] }));
     await get().openBoard(board.id);
   },
+
+  deleteBoard: async (boardId: string) => {
+    await boardApi.deleteBoard(boardId);
+    set((state) => ({
+      boards: state.boards.filter((item) => item.id !== boardId),
+    }));
+    if (get().currentBoardId !== boardId) return;
+
+    const first = get().boards[0];
+    if (first) {
+      await get().openBoard(first.id);
+    } else {
+      set({ currentBoardId: null, columns: [] });
+    }
+  },
+
+  patchBoardName: async (boardId: string, title: string) => {
+    const updated = await boardApi.patchBoardName(boardId, { title });
+    set((state) => ({
+      boards: state.boards.map((item) =>
+        item.id === boardId ? updated : item,
+      ),
+    }));
+  },
 }));
