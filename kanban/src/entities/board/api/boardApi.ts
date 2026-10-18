@@ -8,3 +8,9 @@ export const getBoard = (boardId: string) =>
 
 export const postBoard = (title: CreateBoardBody) =>
   api.post<BoardSummary>("/boards", title);
+
+export const deleteBoard = (boardId: string) =>
+  api.delete(`/boards/${boardId}`);
+
+export const patchBoardName = (boardId: string, title: CreateBoardBody) =>
+  api.patch<BoardSummary>(`/boards/${boardId}`, title);

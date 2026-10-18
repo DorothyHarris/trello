@@ -19,7 +19,7 @@ export type Column = {
   version: number;
 };
 
-export type BoardSummary = Pick<Board, "id"| "title">
+export type BoardSummary = Pick<Board, "id" | "title">;
 
 export type CreateBoardBody = Pick<Board, "title">;
 
@@ -34,8 +34,6 @@ export type CreateColumnBody = {
   title: string;
 };
 
-
-
 export type BoardState = {
   boards: BoardSummary[];
   currentBoardId: string | null;
@@ -47,6 +45,8 @@ export type BoardActions = {
   openBoard: (boardId: string) => Promise<void>;
   createColumn: (title: string) => Promise<void>;
   postBoard: (title: string) => Promise<void>;
+  deleteBoard: (boardId: string) => Promise<void>;
+  patchBoardName: (boardId: string, title: string) => Promise<void>;
 };
 
 export type BoardStore = BoardState & BoardActions;
